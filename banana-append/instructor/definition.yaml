@@ -1,0 +1,146 @@
+# The full source of this assignment, including the solution and any hidden tests. Instructors only.
+# To update the assignment: open the authoring form, choose Import YAML, open this file, make your changes, and export again.
+id: banana-append
+version: "1.0.0"
+
+basics:
+  title: Banana Append
+  short_description: Students write a function that adds " Bananas!" to the end of a string, then use it in a small program that reads a line of text and prints the result.
+  topic_category: String Manipulation
+  difficulty: Beginner
+  estimated_time: 15 minutes
+
+grading:
+  grading_modes: [correctness]
+  test_mode: stdin_stdout
+  points:
+    tests: 100
+    quality: 0
+    acceptance: 0
+
+instructions:
+  body: |
+    Bananas make everything better! In this assignment you will write a
+    function that adds the word Bananas to the end of any text.
+
+    Write a function named `add_bananas` that:
+    - Takes one parameter, a string.
+    - Appends exactly ` Bananas!` to the end of it. There is one space before the capital B, and the text ends with an exclamation mark.
+    - Returns the new string. The function should return the string, not print it.
+
+    Then write the main part of your program. It should:
+    - Read one line of text from the user using `input()`.
+    - Call `add_bananas` with that text.
+    - Print the returned string on its own line.
+
+    Example:
+      Enter some text: I like
+      I like Bananas!
+
+    Another example:
+      Enter some text: Fruit salad with
+      Fruit salad with Bananas!
+
+    Note: The tests look at the end of your program's output, so you can word your
+    "Enter some text" prompt however you like. Just make sure the last line printed
+    is the new string, with nothing added after it.
+
+    Edge cases to consider:
+    - The user types an empty line. The result is then ` Bananas!` (it starts with a space).
+    - The text already ends with a space. Do not remove it. Just append ` Bananas!`.
+    - The text already contains the word Bananas. Still append ` Bananas!`.
+
+media: []
+
+starter_code:
+  language: Python 3
+  files:
+    - file_name: assignment.py
+      code: |
+        # Banana Append
+        # Write a function that appends " Bananas!" to a string and returns it.
+
+        def add_bananas(text):
+            # TODO: Add " Bananas!" to the end of text.
+            # TODO: Return the new string (do not print it here).
+            pass
+
+
+        # Main program
+        user_text = input("Enter some text: ")
+
+        # TODO: Call add_bananas with user_text and store the result.
+
+        # TODO: Print the result.
+
+reference_solution:
+  language: Python 3
+  file_name: assignment.py
+  code: |
+    def add_bananas(text):
+        return text + " Bananas!"
+
+
+    user_text = input("Enter some text: ")
+    result = add_bananas(user_text)
+    print(result)
+
+test_cases:
+  - name: "Success: simple phrase"
+    input: I like
+    expected_output: I like Bananas!
+    visibility: Sample
+    points: 10
+  - name: "Success: single word"
+    input: Go
+    expected_output: Go Bananas!
+    visibility: Sample
+    points: 10
+  - name: "Edge: empty string"
+    input: ""
+    expected_output: " Bananas!"
+    visibility: Hidden
+    points: 20
+  - name: "Edge: text already contains Bananas"
+    input: Bananas
+    expected_output: Bananas Bananas!
+    visibility: Hidden
+    points: 20
+  - name: "Edge: text with punctuation"
+    input: Hello, world!
+    expected_output: Hello, world! Bananas!
+    visibility: Hidden
+    points: 20
+  - name: "Failure: text ending with a space is kept as is"
+    input: "Yellow "
+    expected_output: Yellow  Bananas!
+    visibility: Hidden
+    points: 20
+
+feedback:
+  pass_message: |
+    Great job! Your function adds the bananas correctly every time, even for tricky inputs.
+  fail_message: |
+    Some test cases did not pass. Compare your output with the examples and check the spacing and the exclamation mark.
+  additional_feedback: |
+    - Make sure the text you append starts with a space: " Bananas!"
+    - Use return inside add_bananas. Print only in the main part of the program.
+    - Do not use strip() or change the user's text. Just add to the end of it.
+    - If your output looks right but fails, check the capital B and the exclamation mark.
+
+metadata:
+  tags: [strings, concatenation, functions, return-values, code-correctness]
+  format: Write from scratch
+  media_types: [none]
+  bloom_level: Apply
+  learning_objectives: 
+    - Write a function with a parameter that returns a value.
+    - Use string concatenation to append text to a string.
+    - Call a function and print its returned value.
+    - Produce output that matches a written specification.
+  prerequisites: 
+    - Variables and data types
+    - input() and print()
+    - Defining and calling functions
+  standards_alignment: ""
+  visible_to: All students
